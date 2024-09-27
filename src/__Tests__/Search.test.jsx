@@ -33,19 +33,18 @@ describe("Testing Search Component", () => {
 
    //Här vill vi kontrollera att ett felmeddelande visas när användaren skriver ett ord som inte finns i databasen
    test("error message is displayed when user try to submit an incorrect value", async () => {
-    userEvent.type(screen.getByPlaceholderText("Search..."));
+    const inputElm = screen.getByPlaceholderText("Search...");
+    await userEvent.type(inputElm, "kelly123");
     userEvent.click(screen.getByRole("button", { name: "Search" }));
 
     await waitFor(() => {
       expect(
         screen.getByText(
-          "Error fetching word, please try again later"
+          "Sorry, This word was not in our library databas."
         )
       ).toBeInTheDocument();
     });
   });
-
- 
 
 
   test("fetches and displays word from API correctly", async () => {

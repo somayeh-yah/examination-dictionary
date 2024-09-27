@@ -35,9 +35,9 @@ export default function Search() {
           `https://api.dictionaryapi.dev/api/v2/entries/en/${searchInput}`
         );
 
-        if (!response.ok) {
-          throw new Error("Word not found");
-        }
+        // if (!response.ok) {
+        //   throw new Error("Word not found");
+        // }
 
         const responseData = await response.json();
         setTranslatedWord(responseData[0]);
@@ -52,7 +52,7 @@ export default function Search() {
           setAudioUrl("");
         }
       } catch (error) {
-        setErrorMessage("Error fetching word, please try again later");
+        setErrorMessage("Sorry, This word was not in our library databas.");
       
       }
       setLoading(false);

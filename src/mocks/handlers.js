@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 
+
 export const handlers = [
   // Mocka GET-anropet till Free Dictionary API
   rest.get('https://api.dictionaryapi.dev/api/v2/entries/en/:word', (req, res, ctx) => {
@@ -57,3 +58,5 @@ export const handlers = [
     return res(ctx.status(404), ctx.json({ message: 'Word not found' }));
   }),
 ];
+
+
