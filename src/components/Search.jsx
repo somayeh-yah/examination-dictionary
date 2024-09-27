@@ -2,7 +2,7 @@ import Loading from "./Loading";
 import "./Search.css";
 import { useState, useEffect } from "react";
 import { isEmpty } from "lodash";
-
+import loading from "./Loading";
 
 export default function Search() {
   const [searchInput, setSearchInput] = useState("");
@@ -35,25 +35,17 @@ export default function Search() {
           `https://api.dictionaryapi.dev/api/v2/entries/en/${searchInput}`
         );
 
-        // if (!response.ok) {
-        //   throw new Error("Word not found");
-        // }
-
         const responseData = await response.json();
         setTranslatedWord(responseData[0]);
         console.log(responseData);
-        
-        if (
-          responseData[0].phonetics &&
-          responseData[0].phonetics.length > 0
-        ) {
+
+        if (responseData[0].phonetics && responseData[0].phonetics.length > 0) {
           setAudioUrl(responseData[0].phonetics[0].audio);
         } else {
           setAudioUrl("");
         }
       } catch (error) {
         setErrorMessage("Sorry, This word was not in our library databas.");
-      
       }
       setLoading(false);
       setStartSearch(false);
@@ -70,17 +62,16 @@ export default function Search() {
     <div className="container">
       <form onSubmit={handleSubmit}>
         <div className="search-container">
-        <input 
-         className={`search-input ${errorMessage ? "input-error" : ""}`}
-          type="text"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          placeholder="Search..."
-          
-        />
-        <button type="submit" className="search-btn">
-         Search
-        </button>
+          <input
+            className={`search-input ${errorMessage ? "input-error" : ""}`}
+            type="text"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            placeholder="Search..."
+          />
+          <button type="submit" className="search-btn">
+            Search
+          </button>
         </div>
       </form>
 

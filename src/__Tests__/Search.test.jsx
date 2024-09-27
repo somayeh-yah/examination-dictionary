@@ -17,7 +17,7 @@ describe("Testing Search Component", () => {
     ).toBeInTheDocument(); // Submit button
   });
 
-  //Här vill vi kontrollera att ett felmeddelande visas när användaren gör en tom sökning
+//Här vill vi kontrollera att ett felmeddelande visas när användaren gör en tom sökning
   test("error message is displayed when user try to submit an empty search", async () => {
     userEvent.type(screen.getByPlaceholderText("Search..."));
     userEvent.click(screen.getByRole("button", { name: "Search" }));

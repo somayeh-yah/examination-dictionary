@@ -59,6 +59,7 @@
 
 .search-btn:hover {
   background-color: rgb(185, 96, 185);
+  font-size: 15px;
   transition: background-color 0.3s ease;
 }
 
