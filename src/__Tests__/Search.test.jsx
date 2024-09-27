@@ -9,12 +9,12 @@ describe("Testing Search Component", () => {
   beforeEach(() => {
     render(<Search />);
   });
-  //This test checks that all the essential elements render correctly on the page.
+  //här vill vi kontrollera att vår input renderas korrekt
   test("Search input is rendered correctly", () => {
-    expect(screen.queryByPlaceholderText("Search...")).toBeInTheDocument(); // Input field
+    expect(screen.queryByPlaceholderText("Search...")).toBeInTheDocument(); 
     expect(
       screen.queryByRole("button", { name: "Search" })
-    ).toBeInTheDocument(); // Submit button
+    ).toBeInTheDocument(); 
   });
 
 //Här vill vi kontrollera att ett felmeddelande visas när användaren gör en tom sökning
